@@ -27,7 +27,7 @@ module Camt
     end
 
     def messages
-      @messages ||= Parser.new.parse doc
+      @messages ||= Parser.new.parse self
     end
 
     def statements

@@ -1,5 +1,8 @@
 module Camt
   class Parser
+
+    attr_accessor :file
+
     def get_balance_type_node node, balance_type
       # :param node: BkToCstmrStmt/Stmt/Bal node
       # :param balance type: one of 'OPBD', 'PRCD', 'ITBD', 'CLBD'
@@ -118,6 +121,11 @@ module Camt
         transaction_details[:references] = structured.map(&:text)
       end
 
+      if reason = node.at('./RtrInf/Rsn/Cd').try(:text)
+        reason_language = Camt::Reasons.keys.include?(file.country_code) ? file.country_code : 'EN'
+        transaction_details[:reason] = { code: reason, description: Camt::Reasons[reason_language][reason] }
+      end
+
       transaction_details[:party] = get_party_values node
 
       transaction_details
@@ -152,9 +160,10 @@ module Camt
       message
     end
 
-    def parse doc
-      doc.remove_namespaces!
-      doc.xpath('//BkToCstmrStmt').map{|node| parse_message node }
+    def parse file
+      self.file = file
+      file.doc.remove_namespaces!
+      file.doc.xpath('//BkToCstmrStmt').map{|node| parse_message node }
     end
 
   end
