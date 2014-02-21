@@ -121,6 +121,10 @@ module Camt
         transaction_details[:references] = structured.map(&:text)
       end
 
+      if mandate_identifier = node.at('./Refs/MndtId').try(:text)
+        transaction_details[:mandate_identifier] = mandate_identifier
+      end
+
       if reason = node.at('./RtrInf/Rsn/Cd').try(:text)
         reason_language = Camt::Reasons.keys.include?(file.country_code) ? file.country_code : 'EN'
         transaction_details[:reason] = { code: reason, description: Camt::Reasons[reason_language][reason] }
