@@ -18,7 +18,6 @@ Add to your Gemfile: gem 'camt', github: 'moiristo/camt'
 ## TODO
 
 * More testing
-* Release on RubyGems.org
 * Extend Camt::Parser to support the full CAMT.053 specification
 
 ## Note on Patches/Pull Requests
