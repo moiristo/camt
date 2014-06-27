@@ -70,7 +70,7 @@ module Camt
       'AC06' => "Rekeningnummer geblokkeerd",
       'AC13' => "Debiteur rekening is klant rekening",
       'AG01' => "Transactie niet toegestaan",
-      'AG02' => "Invalid bank operation code",
+      'AG02' => "Transactiecode incorrect, ongeldig bestandsformaat",
       'AM04' => "Onvoldoende saldo",
       'AM05' => "Dubbel betaald",
       'BE01' => "Debiteur naam en rekeningnummer komen niet overeen",
