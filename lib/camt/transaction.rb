@@ -23,7 +23,7 @@ module Camt
     alias_method :type, :transfer_type
 
     def transferred_amount
-      @transferred_amount ||= parse_amount(node)
+      @transferred_amount ||= Amount.new(node).value
     end
 
     alias_method :amount, :transferred_amount
@@ -35,16 +35,6 @@ module Camt
     alias_method :details, :transaction_details
 
     private
-
-    def parse_amount(node)
-      # Parse an element that contains both Amount and CreditDebitIndicator
-      #
-      # :return: signed amount
-      # :returntype: float
-
-      sign = node.at('./CdtDbtInd').text == 'DBIT' ? -1 : 1
-      sign * node.at('./Amt').text.to_f
-    end
 
     def get_transfer_type(node)
       # Map properietary codes from BkTxCd/Prtry/Cd.

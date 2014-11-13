@@ -52,7 +52,7 @@ module Camt
     def get_balance_type_node node, balance_type
       # :param node: BkToCstmrStmt/Stmt/Bal node
       # :param balance type: one of 'OPBD', 'PRCD', 'ITBD', 'CLBD'
-      return node.at("./Bal/Tp/CdOrPrtry/Cd[text()='#{balance_type}']/../../..")
+      node.at("./Bal/Tp/CdOrPrtry/Cd[text()='#{balance_type}']/../../..")
     end
 
     def get_start_balance
@@ -64,7 +64,7 @@ module Camt
       # :param node: BkToCstmrStmt/Stmt/Bal node
       balance_type_node = nil
       ['OPBD', 'PRCD', 'ITBD'].detect{|code| balance_type_node = get_balance_type_node(node, code) }
-      parse_amount balance_type_node
+      Amount.new(balance_type_node).value
     end
 
     def get_end_balance
@@ -75,22 +75,12 @@ module Camt
       # :param node: BkToCstmrStmt/Stmt/Bal node
       balance_type_node = nil
       ['CLBD', 'ITBD'].detect{|code| balance_type_node = get_balance_type_node(node, code) }
-      parse_amount(balance_type_node) if balance_type_node
+      Amount.new(balance_type_node).value if balance_type_node
     end
 
     def parse_Ntry(node)
       # :param node: Ntry node
       Transaction.new(node, country_code)
-    end
-
-    def parse_amount(node)
-      # Parse an element that contains both Amount and CreditDebitIndicator
-      #
-      # :return: signed amount
-      # :returntype: float
-
-      sign = node.at('./CdtDbtInd').text == 'DBIT' ? -1 : 1
-      return sign * node.at('./Amt').text.to_f
     end
   end
 end

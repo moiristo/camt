@@ -7,6 +7,7 @@ require 'active_support/configurable'
 require 'camt/version'
 require 'camt/file'
 require 'camt/parser'
+require 'camt/amount'
 require 'camt/statement'
 require 'camt/transaction'
 
