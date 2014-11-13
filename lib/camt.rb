@@ -2,6 +2,7 @@ require 'nokogiri'
 require 'time'
 require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/module/delegation'
+require 'active_support/configurable'
 
 require 'camt/version'
 require 'camt/file'
@@ -79,5 +80,11 @@ module Camt
       'TM01' => "Bestand aangeleverd na cut-off tijd (uiterste aanlevertijdstip)"
     }
   }
+
+  include ActiveSupport::Configurable
+
+  def self.configure
+    yield config
+  end
 
 end

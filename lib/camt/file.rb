@@ -9,9 +9,9 @@ module Camt
       Camt::File.new(Nokogiri::XML(::File.read(file)))
     end
 
-    def initialize(doc, options = {code: 'CAMT', country_code: 'NL', name: 'Generic CAMT Format'})
+    def initialize(doc, options = {})
       self.code = options[:code] || 'CAMT'
-      self.country_code = options[:country_code] || 'NL'
+      self.country_code = options[:country_code] || Camt.config.default_country_code || raise(ArgumentError.new("No country_code given and no default_country_code configured."))
       self.name = options[:name] || 'Generic CAMT Format'
 
       self.doc = doc

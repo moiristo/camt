@@ -47,4 +47,37 @@ RSpec.describe Camt::File do
       end
     end
   end
+
+  describe "configuration" do
+    context "when a default country code is set" do
+      it "uses the default country code" do
+        expect(subject.country_code).to eq "XY"
+      end
+
+      it "does not raise an error" do
+        expect { subject }.not_to raise_error
+      end
+    end
+
+    context "when no default country code is set" do
+      around do |example|
+        current_country_code = nil
+
+        Camt.configure do |config|
+          current_country_code = config.default_country_code
+          config.default_country_code = nil
+        end
+
+        example.run
+
+        Camt.configure do |config|
+          config.default_country_code = current_country_code
+        end
+      end
+
+      it "raises an ArgumentError" do
+        expect { subject }.to raise_error(ArgumentError)
+      end
+    end
+  end
 end
