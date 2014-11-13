@@ -15,4 +15,18 @@ RSpec.shared_examples_for "any CAMT.053 file" do
     expect(statement.local_currency).to eq expected_currency
   end
 
+  it "has the correct number of transactions" do
+    expect(statement.transactions.size).to eq expected_transactions.size
+  end
+
+  it "has the correct transaction data" do
+    expected_transactions.each_with_index do |expected, index|
+      transaction = statement.transactions[index]
+      expect(transaction.execution_date).to eq Date.parse(expected[:ex_date])
+      expect(transaction.effective_date).to eq Date.parse(expected[:eff_date])
+      expect(transaction.type).to eq expected[:type]
+      expect(transaction.amount).to eq expected[:amount]
+      expect(transaction.details).to eq expected[:details]
+    end
+  end
 end

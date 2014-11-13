@@ -20,13 +20,19 @@ module Camt
       @transfer_type ||= get_transfer_type(node.at('./BkTxCd/Prtry'))
     end
 
+    alias_method :type, :transfer_type
+
     def transferred_amount
       @transferred_amount ||= parse_amount(node)
     end
 
+    alias_method :amount, :transferred_amount
+
     def transaction_details
       @transaction_details ||= node.xpath('.//NtryDtls//TxDtls').map { |node| parse_TxDtls(node) }
     end
+
+    alias_method :details, :transaction_details
 
     private
 
