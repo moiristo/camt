@@ -8,7 +8,7 @@ module Camt
     end
 
     def value
-      sign * node.at('./Amt').text.to_f
+      sign * BigDecimal.new(node.at('./Amt').text)
     end
 
     def sign

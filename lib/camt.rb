@@ -1,5 +1,7 @@
 require 'nokogiri'
 require 'time'
+require 'bigdecimal'
+
 require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/module/delegation'
 require 'active_support/configurable'

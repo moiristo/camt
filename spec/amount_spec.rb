@@ -29,6 +29,10 @@ RSpec.describe Camt::Amount do
         expect(subject.value).to eq(0 - value)
       end
     end
+
+    it "is returned as a BigDecimal" do
+      expect(subject.value).to be_a BigDecimal
+    end
   end
 
   describe "#currency" do
