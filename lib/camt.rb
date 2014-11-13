@@ -6,6 +6,7 @@ require 'camt/object_extension'
 require 'camt/file'
 require 'camt/parser'
 require 'camt/statement'
+require 'camt/transaction'
 
 module Camt
 
@@ -13,14 +14,6 @@ module Camt
 
   Message = Struct.new(:group_header, :statements)
   GroupHeader = Struct.new(:message_id, :created_at, :recipient, :pagination, :additional_info)
-
-  Transaction = Struct.new(
-    :execution_date,
-    :effective_date,
-    :transfer_type,
-    :transferred_amount,
-    :transaction_details
-  )
 
   Reasons = {
     'EN' => {

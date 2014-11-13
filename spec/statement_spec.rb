@@ -73,10 +73,10 @@ RSpec.describe Camt::Statement do
   end
 
   describe "#transactions" do
-    let(:expected) { Array.new }
+    let(:expected_count) { 13 }
 
-    xit "has the value from the parsed file" do
-      expect(subject.transactions).to eq expected
+    it "has the value from the parsed file" do
+      expect(subject.transactions.count).to eq expected_count
     end
   end
 end
