@@ -1,9 +1,9 @@
 require 'nokogiri'
 require 'time'
+require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/module/delegation'
 
 require 'camt/version'
-require 'camt/object_extension'
 require 'camt/file'
 require 'camt/parser'
 require 'camt/statement'
