@@ -68,13 +68,13 @@ module Camt
     end
 
     def get_end_balance
-      # Find the (only) balance node with code ClosingBalance, or
-      # the second (and last) balance node with code InterimBalance in
-      # the case of continued pagination.
+      # Find the (only) balance node with code ClosingBalance (Closing Booked), or
+      # the second (and last) balance node with code InterimBalance (Interim Booked) in
+      # the case of continued pagination. Use ClosingAvailable otherwise.
       #
       # :param node: BkToCstmrStmt/Stmt/Bal node
       balance_type_node = nil
-      ['CLBD', 'ITBD'].detect{|code| balance_type_node = get_balance_type_node(node, code) }
+      ['CLBD', 'ITBD', 'CLAV'].detect{|code| balance_type_node = get_balance_type_node(node, code) }
       Amount.new(balance_type_node).value if balance_type_node
     end
 

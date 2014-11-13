@@ -2,8 +2,14 @@ require_relative "../support/camt.053_integration"
 
 RSpec.describe "camt.xml" do
 
+  let(:expected_id) { "0574908765.2013-04-02" }
+  let(:expected_electronic_sequence_number) { "0070" }
+  let(:expected_creation_time) { "2013-04-12T10:55:08.66+02:00" }
   let(:expected_iban) { "NL77ABNA0574908765" }
   let(:expected_currency) { "EUR" }
+  let(:expected_date) { "2013-04-02" }
+  let(:expected_start_balance) { 1000.01 }
+  let(:expected_end_balance) { 100.01 }
 
   let :expected_transactions do
     [
