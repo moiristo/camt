@@ -1,5 +1,6 @@
 require 'nokogiri'
 require 'time'
+require 'active_support/core_ext/module/delegation'
 
 require 'camt/version'
 require 'camt/object_extension'

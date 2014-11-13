@@ -3,11 +3,13 @@ module Camt
     attr_accessor :code, :country_code, :name
     attr_accessor :doc, :ns
 
+    delegate :errors, :to => :doc
+
     def self.parse file
-      Camt::File.new Nokogiri::XML ::File.read(file)
+      Camt::File.new(Nokogiri::XML(::File.read(file)))
     end
 
-    def initialize doc, options = { code: 'CAMT', country_code: 'NL', name: 'Generic CAMT Format' }
+    def initialize(doc, options = {code: 'CAMT', country_code: 'NL', name: 'Generic CAMT Format'})
       self.code = options[:code] || 'CAMT'
       self.country_code = options[:country_code] || 'NL'
       self.name = options[:name] || 'Generic CAMT Format'
@@ -18,6 +20,9 @@ module Camt
       check_version
     end
 
+    def valid?
+      doc.errors.empty?
+    end
 
     def check_version
       # Sanity check the document's namespace
