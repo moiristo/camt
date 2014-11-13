@@ -5,6 +5,7 @@ require 'camt/version'
 require 'camt/object_extension'
 require 'camt/file'
 require 'camt/parser'
+require 'camt/statement'
 
 module Camt
 
@@ -12,18 +13,6 @@ module Camt
 
   Message = Struct.new(:group_header, :statements)
   GroupHeader = Struct.new(:message_id, :created_at, :recipient, :pagination, :additional_info)
-
-  Statement = Struct.new(
-    :id,
-    :date,
-    :created_at,
-    :local_account,
-    :local_currency,
-    :start_balance,
-    :end_balance,
-    :electronic_sequence_number,
-    :transactions
-  )
 
   Transaction = Struct.new(
     :execution_date,
