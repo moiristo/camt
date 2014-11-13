@@ -24,8 +24,11 @@ module Camt
       @local_account ||= node.at('./Acct/Id').text.strip
     end
 
+    alias_method :iban, :local_account
+
     def local_currency
-      @local_currency ||= node.at('./Acct/Ccy').try(:text)
+      @local_currency ||= node.at('./Acct/Ccy').try(:text) ||
+          node.at('./Bal/Amt').attribute("Ccy").value
     end
 
     def date
