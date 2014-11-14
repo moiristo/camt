@@ -20,7 +20,8 @@ RSpec.describe "camt_switzerland_01.xml" do
             amount: 3.50,
             details: [
                 {party: {}}
-            ]
+            ],
+            purpose: "ORANGE EINZAHLUNGSSCHEINE VERARBEITUNG 29.11.2011 KUNDENNUMMER 01-38264-3"
         },
         {
             ex_date: "2011-11-30",
@@ -29,7 +30,8 @@ RSpec.describe "camt_switzerland_01.xml" do
             amount: -4.50,
             details: [
                 {references: ["123457"], party: {}}
-            ]
+            ],
+            purpose: "E-FINANCE 01-38264-3 TESTLABOR ONLINE/OFFLINE PRODUCT-MANAGEMENT II"
         }
     ]
   end

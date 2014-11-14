@@ -59,4 +59,13 @@ RSpec.describe Camt::Transaction do
       expect(subject.transaction_details).to eq expected
     end
   end
+
+  describe "#purpose" do
+    let(:expected) { "/TRTP/SEPA OVERBOEKING/IBAN/NL46ABNA0499998748/BIC/" \
+                     "ABNANL2A/NAME/NAAM/REMI/OMSCHRIJVING/EREF/NOTPROVIDED" }
+
+    it "has the value from the parsed file" do
+      expect(subject.purpose).to eq expected
+    end
+  end
 end

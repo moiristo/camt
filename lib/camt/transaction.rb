@@ -34,6 +34,11 @@ module Camt
 
     alias_method :details, :transaction_details
 
+    def purpose
+      @purpose ||= node.at('./AddtlNtryInf').try(:text) ||
+          details.map { |detail| detail[:references] }.flatten.join(" ")
+    end
+
     private
 
     def get_transfer_type(node)

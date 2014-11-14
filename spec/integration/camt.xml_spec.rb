@@ -18,7 +18,8 @@ RSpec.describe "camt.xml" do
             eff_date: "2013-04-02",
             type: {proprietary_code: "N196", proprietary_issuer: "ABNAMRO"},
             amount: 1.0,
-            details: []
+            details: [],
+            purpose: "11.11.111.111 Naam Adres 7 2960 Dorp"
         },
         {
             ex_date: "2013-04-02",
@@ -37,7 +38,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA OVERBOEKING/IBAN/NL46ABNA0499998748/BIC/" \
+                     "ABNANL2A/NAME/NAAM/REMI/OMSCHRIJVING/EREF/NOTPROVIDED"
         },
         {
             ex_date: "2013-04-02",
@@ -55,7 +58,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA ACCEPTGIRO/IBAN/NL46ABNA0499998748/BIC/" \
+                     "ABNANL2A/NAME/NAAM/REMI//REMI/Issuer: CUR Ref: 1234567812345678/EREF/NOTPROVIDED"
         },
         {
             ex_date: "2013-04-02",
@@ -162,7 +167,8 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA ACCEPTGIRO BATCH/PREF/3095D4322561460S0PS/NRTX/10"
         },
         {
             ex_date: "2013-04-02",
@@ -181,7 +187,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "INGBNL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA OVERBOEKING/IBAN/NL21INGB0000773837/BIC/INGBNL2A/NAME/ING Bank/" \
+                     "REMI/2305271368 0050001248302363 pid2305271368t/EREF/01-04-2013 21:01 0050001248302363"
         },
         {
             ex_date: "2013-04-02",
@@ -200,7 +208,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "SNSBNL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA OVERBOEKING/IBAN/NL87SNSB0941352955/BIC/" \
+                     "SNSBNL2A/NAME/Naam/REMI/2013-33/EREF/NOTPROVIDED"
         },
         {
             ex_date: "2013-04-02",
@@ -230,14 +240,16 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "SNSBNL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA BATCH/PREF/1202P5518750499B0AO/NRTX/2"
         },
         {
             ex_date: "2013-04-02",
             eff_date: "2013-04-02",
             type: {proprietary_code: "N652", proprietary_issuer: "ABNAMRO"},
             amount: -2.0,
-            details: []
+            details: [],
+            purpose: "/TRTP/SEPA BATCH SALARIS/PREF/1302P5518750499B0AO/NRTX/2"
         },
         {
             ex_date: "2013-04-02",
@@ -257,7 +269,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "BBRUBEBB"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA Incasso algemeen doorlopend/CSID/BE57XC00476306127/NAME/Naam/SA/MARF/N000001861650/" \
+                  "REMI/REF 2202389041/ 708723862112/ 5401939189/IBAN/BE21319980275903/BIC/BBRUBEBB/EREF/540193918971"
         },
         {
             ex_date: "2012-04-02",
@@ -356,14 +370,16 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/TRTP/SEPA Incasso batch/PREF/BATCHID/NRTX/7/PIND/BRUTO"
         },
         {
             ex_date: "2012-04-02",
             eff_date: "2012-04-02",
             type: {proprietary_code: "N247", proprietary_issuer: "ABNAMRO"},
             amount: 7.0,
-            details: []
+            details: [],
+            purpose: "/TRTP/SEPA Incasso batch/PREF/BATCHID/NRTX/7/PIND/BRUTO"
         },
         {
             ex_date: "2012-04-02",
@@ -387,7 +403,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/RTYP/SEPA Incasso niet uitgevoerd/MARF/123456789XXmandaat/RTRN/MS03/IBAN/NL27ABNA0562399340/" \
+              "NAME/Debtor/REMI/Levering maand mei, zie nota 1234556. Uw klantnummer 123455666/EREF/1234567X908303803"
         },
         {
             ex_date: "2012-04-02",
@@ -411,7 +429,9 @@ RSpec.describe "camt.xml" do
                         remote_bank_bic: "ABNANL2A"
                     }
                 }
-            ]
+            ],
+            purpose: "/RTYP/SEPA Incasso terugboeking bank/MARF/123456788XXmandaat/RTRN/MS03/IBAN/NL27ABNA0592326340/" \
+              "NAME/Debtor/REMI/Levering maand mei, zie nota 1234557. Uw klantnummer 123455666/EREF/1234567X908303804"
         }
     ]
   end

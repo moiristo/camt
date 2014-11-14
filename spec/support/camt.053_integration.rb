@@ -51,6 +51,7 @@ RSpec.shared_examples_for "any CAMT.053 file" do
       expect(transaction.type).to eq expected[:type]
       expect(transaction.amount).to eq expected[:amount]
       expect(transaction.details).to eq expected[:details]
+      expect(transaction.purpose).to eq expected[:purpose]
     end
   end
 end
