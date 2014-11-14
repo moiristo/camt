@@ -46,6 +46,14 @@ RSpec.describe Camt::File do
         expect(subject.errors.size).to eq 9
       end
     end
+
+    context "when document isn't even XML" do
+      let(:filename) { "../spec_helper.rb" }
+
+      it "returns the XML errors" do
+        expect(subject.errors.size).to eq 1
+      end
+    end
   end
 
   describe "configuration" do

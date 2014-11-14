@@ -17,7 +17,7 @@ module Camt
       self.doc = doc
       self.ns = doc.namespaces['xmlns']
 
-      check_version
+      check_version if valid?
     end
 
     def valid?
