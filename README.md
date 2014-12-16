@@ -15,6 +15,14 @@ Add to your Gemfile: gem 'camt', github: 'moiristo/camt'
   * puts camt.statements.inspect
   * puts camt.transactions.inspect
 
+## Configuration
+
+You need to set your default country code.
+
+    Camt.configure do |config|
+      config.default_country_code = "NL"
+    end
+
 ## TODO
 
 * More testing

@@ -1,10 +1,17 @@
 require 'nokogiri'
 require 'time'
+require 'bigdecimal'
+
+require 'active_support/core_ext/object/try'
+require 'active_support/core_ext/module/delegation'
+require 'active_support/configurable'
 
 require 'camt/version'
-require 'camt/object_extension'
 require 'camt/file'
 require 'camt/parser'
+require 'camt/amount'
+require 'camt/statement'
+require 'camt/transaction'
 
 module Camt
 
@@ -12,26 +19,6 @@ module Camt
 
   Message = Struct.new(:group_header, :statements)
   GroupHeader = Struct.new(:message_id, :created_at, :recipient, :pagination, :additional_info)
-
-  Statement = Struct.new(
-    :id,
-    :date,
-    :created_at,
-    :local_account,
-    :local_currency,
-    :start_balance,
-    :end_balance,
-    :electronic_sequence_number,
-    :transactions
-  )
-
-  Transaction = Struct.new(
-    :execution_date,
-    :effective_date,
-    :transfer_type,
-    :transferred_amount,
-    :transaction_details
-  )
 
   Reasons = {
     'EN' => {
@@ -96,5 +83,11 @@ module Camt
       'TM01' => "Bestand aangeleverd na cut-off tijd (uiterste aanlevertijdstip)"
     }
   }
+
+  include ActiveSupport::Configurable
+
+  def self.configure
+    yield config
+  end
 
 end
