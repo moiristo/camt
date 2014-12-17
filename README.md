@@ -6,16 +6,9 @@ This gem is based on the Python implementation by Therp (https://code.launchpad.
 
 ## Installation
 
-Add to your Gemfile: gem 'camt', github: 'moiristo/camt'
+Add to your Gemfile:
 
-## Usage
-
-* Parse a CAMT file:
-  * camt = Camt::File.parse 'camt.xml'
-* Get information:
-  * puts camt.messages.inspect
-  * puts camt.statements.inspect
-  * puts camt.transactions.inspect
+    gem "camt"
 
 ## Configuration
 
@@ -24,6 +17,18 @@ You need to set your default country code.
     Camt.configure do |config|
       config.default_country_code = "NL"
     end
+
+## Usage
+
+Parse a CAMT file:
+
+    camt = Camt::File.parse 'camt.xml'
+
+Get information:
+
+    puts camt.messages.inspect
+    puts camt.statements.inspect
+    puts camt.transactions.inspect
 
 ## TODO
 
