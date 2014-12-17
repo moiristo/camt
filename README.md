@@ -2,6 +2,8 @@
 
 This gem is based on the Python implementation by Therp (https://code.launchpad.net/~therp-nl/banking-addons) (camt.py). It is still far from supporting the full CAMT.053 specification, but it does provide the most important transaction information.
 
+[![Build Status](https://travis-ci.org/moiristo/camt.svg)](https://travis-ci.org/moiristo/camt)
+
 ## Installation
 
 Add to your Gemfile: gem 'camt', github: 'moiristo/camt'
